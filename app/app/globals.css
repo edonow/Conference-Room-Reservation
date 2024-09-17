@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS for FullCalendar */
+.fc-day {
+  @apply cursor-pointer;
+}
+
+.fc-day:hover {
+  @apply bg-yellow-300;
+}
+
+.fc-toolbar-title {
+  color: black;
+  font-weight: 700;
+}
+
+.fc-toolbar-title {
+  border-bottom: 2px solid #fcd34d;
+}
+
+.no-hover:hover {
+  background-color: inherit !important;
+}
+.fc-daygrid .fc-day-sun {
+  color: red;
+}
+
+.fc-daygrid .fc-day-sat {
+  color: blue;
+}

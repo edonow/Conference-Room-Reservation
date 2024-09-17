@@ -1,0 +1,64 @@
+# docker compose up --build (-d)
+# docker compose down --rmi all --volumes --remove-orphans
+
+version: "3.8"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    container_name: fastapi
+    image: fastapi
+    ports:
+      - "8000:8000"
+    environment:
+      - TZ=Asia/Tokyo
+    volumes:
+      - ./api:/api
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - ./api/.env
+    # cpus: "1.0"
+    # mem_limit: 500M
+
+  db:
+    image: mysql:latest
+    container_name: db
+    restart: always
+    env_file:
+      - ./api/.env
+    environment:
+      - TZ=Asia/Tokyo
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    command: --default-authentication-plugin=caching_sha2_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      start_period: 30s
+      retries: 6
+    # cpus: "1.0"
+    # mem_limit: 500M
+
+  nextjs:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    container_name: nextjs
+    image: nextjs
+    volumes:
+      - ./app:/app
+    ports:
+      - "3000:3000"
+    environment:
+      - TZ=Asia/Tokyo
+    # cpus: "1.0"
+    # mem_limit: 300M
+
+volumes:
+  db_data: {}

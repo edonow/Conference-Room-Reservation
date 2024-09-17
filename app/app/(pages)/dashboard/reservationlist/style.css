@@ -1,0 +1,18 @@
+.myCustomEventTitle {
+  @apply text-[5px] sm:text-[9px] md:text-[13px] lg:text-base font-bold;
+}
+.fc-toolbar-title {
+  @apply text-xl md:text-2xl !important; /* または任意のサイズ */
+}
+.fc-daygrid-day-number {
+  @apply text-xs md:text-sm lg:text-lg !important; /* または任意のサイズ */
+}
+.fc-col-header-cell-cushion {
+  @apply text-xs md:text-sm lg:text-lg !important; /* または任意のサイズ */
+}
+.fc-today-button,
+.fc-prev-button,
+.fc-next-button {
+  @apply text-xs md:text-sm lg:text-lg !important; /* または任意のサイズ */
+  @apply px-2 py-1 !important; /* ボタン自体の大きさ */
+}
