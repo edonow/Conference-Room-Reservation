@@ -42,7 +42,10 @@ API_URL=your_fastapi_url
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
 STRIPE_SECRET_KEY=your_stripe_secret_key
 ```
-### Step 2: Start the Application
+### Step 2: Add Images to /app/public/image
+Place any necessary photos for the application under the /app/public/image/ directory.
+
+### Step 3: Start the Application
 ```bash
 docker-compose up -d --build
 ```
